@@ -1,6 +1,6 @@
-<img src="./.assets/christmas_ferris.png" width="164">
+<img src="./.assets/rust-banner.png" width="300">
 
-# 🎄 Advent of Code {year}
+# 🎄 Advent of Code 2020
 
 Solutions for [Advent of Code](https://adventofcode.com/) in [Rust](https://www.rust-lang.org/).
 
@@ -14,28 +14,28 @@ Solutions for [Advent of Code](https://adventofcode.com/) in [Rust](https://www.
 
 <!--- benchmarking table --->
 
+## TL;DR
+
+| **Command**                   | **Usage**                                                                                 |
+|-------------------------------|-------------------------------------------------------------------------------------------|
+| `cargo scaffold <day>`        | Creates module, input, and example files for a day.                                       |
+| `cargo download <day>`        | Downloads puzzle input and description for a day.                                         |
+| `cargo solve <day> [--submit <part>]`| Runs solution for a specific day with real inputs. Use `--submit <part>` to submit the answer to the website                                |
+| `cargo all`                   | Runs all solutions sequentially.                                                          |
+| `cargo time <day> [--store]`  | Benchmarks code for a day (use `--store` to save results).                                 |
+| `cargo test`                  | Runs all tests (use `--bin <day>` for specific day).                                       |
+| `cargo read <day>`            | Fetches and displays puzzle description for a day.                                        |
+| `cargo today`                 | Scaffolds, downloads, and reads the puzzle for the current day in December.               |
+| `cargo fmt`                   | Formats all code.                                                                         |
+| `cargo clippy`                | Lints all code.                                                                           |
 ---
 
-## Template setup
+## 💻 Requierments
 
-This template supports all major OS (macOS, Linux, Windows).
-
-###  📝 Create your repository
-
-1.  Open [the template repository](https://github.com/fspoettel/advent-of-code-rust) on Github.
-2.  Click [Use this template](https://github.com/fspoettel/advent-of-code-rust/generate) and create your repository.
-3.  Clone your repository to your computer.
-4.  If you are solving a previous year's advent of code, change the `AOC_YEAR` variable in `.cargo/config.toml` to reflect the year you are solving.
-
-### 💻 Setup rust
-
-1.  Install the [Rust toolchain](https://www.rust-lang.org/tools/install).
-2.  (recommended) Install the [rust-analyzer](https://rust-analyzer.github.io/manual.html) extension for your code editor.
-3.  (optional) Install a native debugger. If you are using VS Code, [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb) is a good option.
-
----
-
-✨ You can start solving puzzles now! Head to the [Usage section](#usage) to see how to use this template. If you like, you can configure [some optional features](#optional-template-features).
+1. Install the [Rust toolchain](https://www.rust-lang.org/tools/install).
+2. Install the [rust-analyzer](https://rust-analyzer.github.io/manual.html) extension for your code editor.
+3. Install [`aoc-cli`](https://github.com/scarvalhojr/aoc-cli/) via cargo: `cargo install aoc-cli --version 0.12.0`
+2. Create the file `<home_directory>/.adventofcode.session` and paste your session cookie into it.
 
 ## Usage
 
@@ -55,7 +55,7 @@ cargo scaffold <day>
 
 Individual solutions live in the `./src/bin/` directory as separate binaries. _Inputs_ and _examples_ live in the the `./data` directory.
 
-Every [solution](https://github.com/fspoettel/advent-of-code-rust/blob/main/src/template.txt) has _tests_ referencing its _example_ file in `./data/examples`. Use these tests to develop and debug your solutions against the example input. In VS Code, `rust-analyzer` will display buttons for running / debugging these unit tests above the unit test blocks.
+Every [solution](https://github.com/fspoettel/advent-of-code-rust/blob/main/src/template.txt) has _tests_ referencing its _example_ file in `./data/examples`. Use these tests to develop and debug your solutions against the example input.
 
 > [!TIP]
 > If a day has multiple example inputs, you can use the `read_file_part()` helper in your tests instead of `read_file()`. If this e.g. applies to day 1, you can create a second example file `01-2.txt` and invoke the helper like `let result = part_two(&advent_of_code::template::read_file_part("examples", DAY, 2));`. This supports an arbitrary number of example files.
@@ -218,93 +218,3 @@ cargo fmt
 ```sh
 cargo clippy
 ```
-
-## Optional template features
-
-### Configure aoc-cli integration
-
-1. Install [`aoc-cli`](https://github.com/scarvalhojr/aoc-cli/) via cargo: `cargo install aoc-cli --version 0.12.0`
-2. Create the file `<home_directory>/.adventofcode.session` and paste your session cookie into it. To retrieve the session cookie, press F12 anywhere on the Advent of Code website to open your browser developer tools. Look in _Cookies_ under the _Application_ or _Storage_ tab, and copy out the `session` cookie value. [^1]
-
-Once installed, you can use the [download command](#download-input--description-for-a-day), the read command, and automatically submit solutions via the [`--submit` flag](#submitting-solutions).
-
-### Automatically track ⭐️ progress in the readme
-
-This template includes [a Github action](https://github.com/k2bd/advent-readme-stars) that automatically updates the readme with your advent of code progress.
-
-To enable it, complete the following steps:
-
-#### 1. Create a private leaderboard
-
-Go to the leaderboard page of the year you want to track and click _Private Leaderboard_. If you have not created a leaderboard yet, create one by clicking _Create It_. Your leaderboard should be accessible under `https://adventofcode.com/{year}/leaderboard/private/view/{aoc_user_id}`.
-
-#### 2. Set repository secrets
-
-Go to the _Secrets_ tab in your repository settings and create the following secrets:
-
--   `AOC_USER_ID`: Go to [this page](https://adventofcode.com/settings) and copy your user id. It's the number behind the `#` symbol in the first name option. Example: `3031`.
--   `AOC_YEAR`: the year you want to track. Example: `2021`.
--   `AOC_SESSION`: an active session[^2] for the advent of code website. To get this, press F12 anywhere on the Advent of Code website to open your browser developer tools. Look in your Cookies under the Application or Storage tab, and copy out the `session` cookie.
-
-Go to the _Variables_ tab in your repository settings and create the following variable:
-
--   `AOC_ENABLED`: This variable controls whether the workflow is enabled. Set it to `true` to enable the progress tracker. After you complete AoC or no longer work on it, you can set this to `false` to disable the CI.
-
-✨ You can now run this action manually via the _Run workflow_ button on the workflow page. If you want the workflow to run automatically, uncomment the `schedule` section in the `readme-stars.yml` workflow file or add a `push` trigger.
-
-### Enable code formatting / clippy checks in the CI
-
-Uncomment the respective sections in the `ci.yml` workflow.
-
-### Use DHAT to profile heap allocations
-
-If you are not only interested in the runtime of your solution, but also its memory allocation profile, you can use the template's [DHAT](https://valgrind.org/docs/manual/dh-manual.html) integration to analyze it. In order to activate DHAT, call the `solve` command with the `--dhat` flag.
-
-```sh
-cargo solve 1 --dhat
-
-# output:
-#     Running `target/dhat/1`
-# dhat: Total:     276 bytes in 3 blocks
-# dhat: At t-gmax: 232 bytes in 2 blocks
-# dhat: At t-end:  0 bytes in 0 blocks
-# dhat: The data has been saved to dhat-heap.json, and is viewable with dhat/dh_view.html
-# Part 1: 9001 (4.1ms)
-```
-
-The command will output some basic stats to the command-line and generate a `dhat-heap.json` report in the repo root directory.
-
-You can pass the report a tool like [dh-view](https://nnethercote.github.io/dh_view/dh_view.html) to view a detailed breakdown of heap allocations.
-
-### Use VS Code to debug your code
-
-1.  Install [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) and [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb).
-2.  Set breakpoints in your code. [^3]
-3.  Click _Debug_ next to the unit test or the _main_ function. [^4]
-4.  The debugger will halt your program at the specific line and allow you to inspect the local stack. [^5]
-
-## Useful crates
-
--   [itertools](https://crates.io/crates/itertools): Extends iterators with extra methods and adaptors. Frequently useful for aoc puzzles.
--   [regex](https://crates.io/crates/regex): Official regular expressions implementation for Rust.
-
-A curated list of popular crates can be found on [blessred.rs](https://blessed.rs/crates).
-
-Do you have aoc-specific crate recommendations? [Share them!](https://github.com/fspoettel/advent-of-code-rust/edit/main/README.md)
-
-## Common pitfalls
-
--   **Integer overflows:** This template uses 32-bit integers by default because it is generally faster - for example when packed in large arrays or structs - than using 64-bit integers everywhere. For some problems, solutions for real input might exceed 32-bit integer space. While this is checked and panics in `debug` mode, integers [wrap](https://doc.rust-lang.org/book/ch03-02-data-types.html#integer-overflow) in `release` mode, leading to wrong output when running your solution.
-
-## Footnotes
-
-[^1]: The session cookie might expire after a while (~1 month) which causes the downloads to fail. To fix this issue, refresh the `.adventofcode.session` file.
-[^2]: The session cookie might expire after a while (~1 month) which causes the automated workflow to fail. To fix this issue, refresh the AOC_SESSION secret.
-[^3]:
-    <img src="https://user-images.githubusercontent.com/1682504/198838369-453dc22c-c645-4803-afe0-fc50d5a3f00c.png" alt="Set a breakpoint" width="450" />
-
-[^4]:
-    <img alt="Run debugger" src="https://user-images.githubusercontent.com/1682504/198838372-c89369f6-0d05-462e-a4c7-8cd97b0912e6.png" width="450" />
-
-[^5]:
-    <img alt="Inspect debugger state" src="https://user-images.githubusercontent.com/1682504/198838373-36df6996-23bf-4757-9335-0bc4c1db0276.png" width="450" />
