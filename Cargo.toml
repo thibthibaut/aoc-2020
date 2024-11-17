@@ -28,4 +28,6 @@ pico-args = "0.5.0"
 tinyjson = "2.5.1"
 
 # Solution dependencies
-rerun = "0.20.0" # Can be used for visualization
+rerun = "0.20.0"   # Can be used for visualization
+serde = "1.0.215"
+de-regex = "0.1.0"

@@ -20,7 +20,7 @@ Solutions for [Advent of Code](https://adventofcode.com/) in [Rust](https://www.
 |-------------------------------|-------------------------------------------------------------------------------------------|
 | `cargo scaffold <day>`        | Creates module, input, and example files for a day.                                       |
 | `cargo download <day>`        | Downloads puzzle input and description for a day.                                         |
-| `cargo solve <day> [--submit <part>]`| Runs solution for a specific day with real inputs. Use `--submit <part>` to submit the answer to the website                                |
+| `cargo solve <day> [--submit <part>]`| Runs solution for a specific day with real inputs. Use `--submit <part>` to submit the answer to the website  |
 | `cargo all`                   | Runs all solutions sequentially.                                                          |
 | `cargo time <day> [--store]`  | Benchmarks code for a day (use `--store` to save results).                                 |
 | `cargo test`                  | Runs all tests (use `--bin <day>` for specific day).                                       |
